@@ -44,7 +44,7 @@ Synthetic Aperture Radar (SAR) imagery plays a critical role in all-weather, day
 
 <figure>
 <div align="center">
-<img src=Figs/dataset.png width="50%">
+<img src=Figs/dataset.png width="40%">
 </div>
 
 <div align='center'>
