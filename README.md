@@ -14,12 +14,25 @@ Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>
   <a href="#-update">Update</a> |
   <a href="#-abstract">Abstract</a> |
   <a href="#-datasets">Datasets</a> |
-  <a href="#-models">Models</a> |
+  <a href="#-pre-training">Pre-training</a> |
   <a href="#-usage">Usage</a> |
   <a href="#-statement">Statement</a>
 </p >
+<p align="center">
+<a href="https://arxiv.org/abs/2512.16635"><img src="https://img.shields.io/badge/Paper-arxiv-red"></a>  
+<a href="https://pan.baidu.com/s/1vcm2vyINevzqXw7e9A1dZQ"><img src="https://img.shields.io/badge/Dataset-BaiduYun-blue"></a>
+<a href="https://huggingface.co/datasets/Wenquandan777/SAR-1M"><img src="https://img.shields.io/badge/Dataset-Hugging%20face-yellow"></a>
+</p>
 
 ## 🔥 Update
+
+**2026.3.16**
+
+- SAR-1M dataset is publicly available on [Hugging Face](https://huggingface.co/datasets/Wenquandan777/SAR-1M) and [Baidu Netdisk](https://pan.baidu.com/s/1vcm2vyINevzqXw7e9A1dZQ).
+
+**2026.2.21**
+
+- The paper is accepted by **CVPR 2026**! 🎉🎉🎉
 
 **2025.12.19**
 
@@ -53,7 +66,11 @@ Synthetic Aperture Radar (SAR) imagery plays a critical role in all-weather, day
 
 </div>
 
-## 🚀 Models
+SAR-1M is a large-scale synthetic aperture radar (SAR) image dataset designed for SAR representation learning. The dataset contains over one million SAR images, and about 75% of the SAR samples are paired with geographically aligned optical images, enabling multimodal remote sensing studies.
+
+
+
+## 🚀 Pre-training
 
 Coming Soon.
 
@@ -62,6 +79,7 @@ Coming Soon.
 Coming Soon.
 
 ## 🍭 Results
+
 
 <figure>
 <div align="center">
@@ -142,7 +160,7 @@ Coming Soon.
   <tr style="border-top: 2px solid #999;">
     <td><b>SARMAE(ViT-B)</b></td>
     <td align="center">89.30</td>
-    <td align="center">92.92</td>
+    <td align="center"><b>92.92<b></td>
     <td align="center">96.70</td>
     <td align="center"><b>99.61</b></td>
     <td align="center">95.06</td>
@@ -373,5 +391,5 @@ If you find SARMAE helpful, please give a ⭐ and cite it as follows:
 
 ## 🎺 Statement
 
-For any other questions please contact Danxu Liu at [bit.edu.cn](3120245436@bit.edu.cn) or [gmail.com](ldx.wenquandan@gmail.com).
-
+- This project is released under the [CC BY-NC 4.0](LICENSE).
+- For any other questions please contact Danxu Liu at [bit.edu.cn](3120245436@bit.edu.cn) or [gmail.com](ldx.wenquandan@gmail.com).
