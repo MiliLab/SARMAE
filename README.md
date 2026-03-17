@@ -20,7 +20,7 @@ Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>
 </p >
 <p align="center">
 <a href="https://arxiv.org/abs/2512.16635"><img src="https://img.shields.io/badge/Paper-arxiv-red"></a>  
-<a href="https://pan.baidu.com/s/1vcm2vyINevzqXw7e9A1dZQ"><img src="https://img.shields.io/badge/Dataset-BaiduYun-blue"></a>
+<a href="https://pan.baidu.com/s/1ok4QCfeTVSJlPpAuLxEVxQ?pwd=0717"><img src="https://img.shields.io/badge/Dataset-BaiduYun-blue"></a>
 <a href="https://huggingface.co/datasets/Wenquandan777/SAR-1M"><img src="https://img.shields.io/badge/Dataset-Hugging%20face-yellow"></a>
 </p>
 
@@ -28,7 +28,7 @@ Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>
 
 **2026.3.16**
 
-- SAR-1M dataset is publicly available on [Hugging Face](https://huggingface.co/datasets/Wenquandan777/SAR-1M) and [Baidu Netdisk](https://pan.baidu.com/s/1vcm2vyINevzqXw7e9A1dZQ).
+- SAR-1M dataset is publicly available on [Hugging Face](https://huggingface.co/datasets/Wenquandan777/SAR-1M) and [Baidu Netdisk](https://pan.baidu.com/s/1ok4QCfeTVSJlPpAuLxEVxQ?pwd=0717).
 
 **2026.2.21**
 
