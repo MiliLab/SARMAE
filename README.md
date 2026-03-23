@@ -2,7 +2,8 @@
 
 <h1>SARMAE: Masked Autoencoder for SAR Representation Learning</h1>
 
-Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>, Haoyang Chen<sup>2,4 *</sup>, Wentao Jiang<sup>2</sup>, Yilin Cheng<sup>3,4</sup>, Haonan Guo<sup>2,4</sup>, Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
+Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>, Haoyang Chen<sup>2,4 *</sup>, Wentao Jiang<sup>2</sup>, Yilin Cheng<sup>3,4</sup>, Haonan Guo<sup>2,4</sup>, 
+Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 
 <sup>1</sup> Beijing Institute of Technology,  <sup>2</sup> Wuhan University,  <sup>3</sup> Fudan University,  <sup>4</sup> Zhongguancun Academy.
 
