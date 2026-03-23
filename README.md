@@ -21,10 +21,15 @@ Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>
 <p align="center">
 <a href="https://arxiv.org/abs/2512.16635"><img src="https://img.shields.io/badge/Paper-arxiv-red"></a>  
 <a href="https://pan.baidu.com/s/1ok4QCfeTVSJlPpAuLxEVxQ?pwd=0717"><img src="https://img.shields.io/badge/Dataset-BaiduYun-blue"></a>
+<a href="https://pan.baidu.com/s/1KbIVC2AWfp_8tliqQLumXg?pwd=0717"><img src="https://img.shields.io/badge/Pretrain Weight-BaiduYun-blue"></a>
 <a href="https://huggingface.co/datasets/Wenquandan777/SAR-1M"><img src="https://img.shields.io/badge/Dataset-Hugging%20face-yellow"></a>
+<a href="https://huggingface.co/Wenquandan777/SARMAE/tree/main"><img src="https://img.shields.io/badge/Pretrain Weight-Hugging%20face-yellow"></a>
 </p>
 
 ## 🔥 Update
+
+**2026.3.23**
+- SARMAE pretrained weights are publicly available on [Hugging Face](https://huggingface.co/Wenquandan777/SARMAE/tree/main) and [Baidu Netdisk](https://pan.baidu.com/s/1KbIVC2AWfp_8tliqQLumXg?pwd=0717).
 
 **2026.3.16**
 
@@ -80,6 +85,13 @@ Coming Soon.
 
 ## 🍭 Results
 
+### Pretraining 
+
+#### SARMAE
+|Pretrain|Backbone | Input size | Pretrained model|
+|-------|-------- | ---------- | ----- |
+| SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Base.pth) |
+| SARMAE | ViT-L | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Large.pth) |
 
 <figure>
 <div align="center">
