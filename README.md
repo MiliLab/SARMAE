@@ -29,6 +29,9 @@ Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 
 ## 🔥 Update
 
+**2026.3.24**
+- The codes of pretraining and classification in fintuning are released!
+
 **2026.3.23**
 - SARMAE pretrained weights are publicly available on [Hugging Face](https://huggingface.co/Wenquandan777/SARMAE/tree/main) and [Baidu Netdisk](https://pan.baidu.com/s/1KbIVC2AWfp_8tliqQLumXg?pwd=0717).
 
@@ -78,21 +81,68 @@ SAR-1M is a large-scale synthetic aperture radar (SAR) image dataset designed fo
 
 ## 🚀 Pre-training
 
-Coming Soon.
+Environment:
+
+- Python 3.8.20
+- Pytorch 1.12.1+cu113
+- torchvision 0.13.1+cu113
+- timm 0.6.13 
+
+### Step-by-step installation (suitable for 4090&A800&A100)
+
+```
+conda create -n sarmae python=3.8 -y
+conda activate sarmae
+
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+pip install requirements.txt
+```
+1. Preparing with SAR-1M: Download the [SAR-1M](https://huggingface.co/datasets/Wenquandan777/SAR-1M). The indices of paired images are provided in `paired.json`, while those of unpaired images are listed in `unpaired.json`. To extend the SAR-1M dataset for pretraining with additional data, users can append the corresponding image indices to these JSON files.
+
+2. Pretraining: take ViT-B as an example (batchsize: 4096=8*512)
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7     python -m torch.distributed.launch \
+    --nproc_per_node=8 \
+    --master_port 20003 \
+    train_mae_contrastive.py \
+    --model mae_vit_base_patch16 \
+    --data_path ./data \
+    --enable_sar_noise \
+    --noise_ratio 0.5 --random_noise \
+    --noise_min 0.0 --noise_max 0.7 \
+    --output_dir ./output_vitb \
+    --batch_size 512 --epochs 300 \
+    --lr 1e-4 --mae_loss_weight 1 --alignment_loss_weight 0.8 \
+    --loss_schedule cosine \
+    --sar_pretrained ./mae_pretrain_vit_base.pth \
+    --dinov3_pretrained ./dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth \
+    --freeze_optical_completely \
+    --clip_grad 1.0    
+```
+
+3. Fine-tuning: an example of evaluating the pretrained ViT-B weight on Fusar dataset
+
+```
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1   --master_port 20005 \
+main_finetune.py \
+--dataset 'fusar'  --data_path /data/FUSAR  \
+--model 'vit_base_patch16'   \
+--batch_size 8 --epochs 30  --exp_num=5  \
+--finetune './SARMAE_vit_Base.pth' 
+```
+
+#### SARMAE pretrained weights
+|Pretrain|Backbone | Input size | Pretrained model|
+|-------|-------- | ---------- | ----- |
+| SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Base.pth) |
+| SARMAE | ViT-L | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Large.pth) |
 
 ## 🔨 Usage
 
 Coming Soon.
 
 ## 🍭 Results
-
-### Pretraining 
-
-#### SARMAE
-|Pretrain|Backbone | Input size | Pretrained model|
-|-------|-------- | ---------- | ----- |
-| SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Base.pth) |
-| SARMAE | ViT-L | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Large.pth) |
 
 <figure>
 <div align="center">
