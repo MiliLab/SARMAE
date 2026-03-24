@@ -22,9 +22,9 @@ Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 <p align="center">
 <a href="https://arxiv.org/abs/2512.16635"><img src="https://img.shields.io/badge/Paper-arxiv-red"></a>  
 <a href="https://pan.baidu.com/s/1ok4QCfeTVSJlPpAuLxEVxQ?pwd=0717"><img src="https://img.shields.io/badge/Dataset-BaiduYun-blue"></a>
-<a href="https://pan.baidu.com/s/1KbIVC2AWfp_8tliqQLumXg?pwd=0717"><img src="https://img.shields.io/badge/Pretrain Weight-BaiduYun-blue"></a>
+<a href="https://pan.baidu.com/s/1DOsZolLZ--gMuNUgUXeyVg?pwd=0717"><img src="https://img.shields.io/badge/Pretrain Weight-BaiduYun-blue"></a>
 <a href="https://huggingface.co/datasets/Wenquandan777/SAR-1M"><img src="https://img.shields.io/badge/Dataset-Hugging%20face-yellow"></a>
-<a href="https://huggingface.co/Wenquandan777/SARMAE/tree/main"><img src="https://img.shields.io/badge/Pretrain Weight-Hugging%20face-yellow"></a>
+<a href="https://huggingface.co/Wenquandan777/SARMAE"><img src="https://img.shields.io/badge/Pretrain Weight-Hugging%20face-yellow"></a>
 </p>
 
 ## 🔥 Update
@@ -33,7 +33,7 @@ Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 - The codes of pretraining and classification in fintuning are released!
 
 **2026.3.23**
-- SARMAE pretrained weights are publicly available on [Hugging Face](https://huggingface.co/Wenquandan777/SARMAE/tree/main) and [Baidu Netdisk](https://pan.baidu.com/s/1KbIVC2AWfp_8tliqQLumXg?pwd=0717).
+- SARMAE pretrained weights are publicly available on [Hugging Face](https://huggingface.co/Wenquandan777/SARMAE) and [Baidu Netdisk](https://pan.baidu.com/s/1DOsZolLZ--gMuNUgUXeyVg?pwd=0717).
 
 **2026.3.16**
 
