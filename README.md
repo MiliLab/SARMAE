@@ -135,8 +135,8 @@ main_finetune.py \
 #### SARMAE pretrained weights
 |Pretrain|Backbone | Input size | Pretrained model|
 |-------|-------- | ---------- | ----- |
-| SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Base.pth) |
-| SARMAE | ViT-L | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vit_Large.pth) |
+| SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vitb_checkpoint-last) |
+| SARMAE | ViT-L | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vitl_checkpoint-last) |
 
 ## 🔨 Usage
 
