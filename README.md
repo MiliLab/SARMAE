@@ -95,7 +95,7 @@ conda create -n sarmae python=3.8 -y
 conda activate sarmae
 
 pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 1. Preparing with SAR-1M: Download the [SAR-1M](https://huggingface.co/datasets/Wenquandan777/SAR-1M). The indices of paired images are provided in `paired.json`, while those of unpaired images are listed in `unpaired.json`. To extend the SAR-1M dataset for pretraining with additional data, users can append the corresponding image indices to these JSON files.
 
