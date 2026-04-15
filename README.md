@@ -163,7 +163,7 @@ cd mmrotate
 pip install -v -e .
 ```
 
-- Fine-tuning: an example of evaluating the pretrained ViT-B weight on SSDD dataset
+Fine-tuning: an example of evaluating the pretrained ViT-B weight on SSDD dataset
 
 ```
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=40003 \
