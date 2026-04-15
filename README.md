@@ -460,7 +460,7 @@ configs/AIRSEG/vit-b-airseg-all.py --launcher pytorch
     <td align="center">74.95</td>
     <td align="center">67.79</td>
     <td align="center">56.28</td>
-    <td align="center">39.56</td>
+    <td align="center">51.93</td>
     <td align="center">89.29</td>
   </tr>
   <tr style="border-top: 2px solid #999;">
