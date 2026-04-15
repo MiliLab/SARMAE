@@ -2,7 +2,7 @@
 
 <h1>SARMAE: Masked Autoencoder for SAR Representation Learning</h1>
 
-Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>, Haoyang Chen<sup>2,4 *</sup>, Wentao Jiang<sup>2</sup>, Yilin Cheng<sup>3,4</sup>, Haonan Guo<sup>2,4</sup>, 
+Danxu Liu<sup>1,4 *</sup>, Di Wang<sup>2,4 *</sup>, Hebaixu Wang<sup>2,4 *</sup>, Haoyang Chen<sup>2,4 *</sup>, Wentao Jiang<sup>2</sup>, Yilin Cheng<sup>3,4</sup>, Haonan Guo<sup>2,4</sup>,
 Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 
 <sup>1</sup> Beijing Institute of Technology,  <sup>2</sup> Wuhan University,  <sup>3</sup> Fudan University,  <sup>4</sup> Zhongguancun Academy.
@@ -29,10 +29,16 @@ Wei Cui<sup>1 †</sup>, Jing Zhang<sup>2,4 †</sup>.
 
 ## 🔥 Update
 
-**2026.3.24**
+**2026.4.16**
+
 - The codes of pretraining and classification in fintuning are released!
 
+**2026.4.15**
+
+- The configs and codes of detection and segmentation in fintuning are released!
+
 **2026.3.23**
+
 - SARMAE pretrained weights are publicly available on [Hugging Face](https://huggingface.co/Wenquandan777/SARMAE) and [Baidu Netdisk](https://pan.baidu.com/s/1DOsZolLZ--gMuNUgUXeyVg?pwd=0717).
 
 **2026.3.16**
@@ -77,8 +83,6 @@ Synthetic Aperture Radar (SAR) imagery plays a critical role in all-weather, day
 
 SAR-1M is a large-scale synthetic aperture radar (SAR) image dataset designed for SAR representation learning. The dataset contains over one million SAR images, and about 75% of the SAR samples are paired with geographically aligned optical images, enabling multimodal remote sensing studies.
 
-
-
 ## 🚀 Pre-training
 
 Environment:
@@ -86,7 +90,7 @@ Environment:
 - Python 3.8.20
 - Pytorch 1.12.1+cu113
 - torchvision 0.13.1+cu113
-- timm 0.6.13 
+- timm 0.6.13
 
 ### Step-by-step installation (suitable for 4090&A800&A100)
 
@@ -97,8 +101,8 @@ conda activate sarmae
 pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
 ```
-1. Preparing with SAR-1M: Download the [SAR-1M](https://huggingface.co/datasets/Wenquandan777/SAR-1M). The indices of paired images are provided in `paired.json`, while those of unpaired images are listed in `unpaired.json`. To extend the SAR-1M dataset for pretraining with additional data, users can append the corresponding image indices to these JSON files.
 
+1. Preparing with SAR-1M: Download the [SAR-1M](https://huggingface.co/datasets/Wenquandan777/SAR-1M). The indices of paired images are provided in `paired.json`, while those of unpaired images are listed in `unpaired.json`. To extend the SAR-1M dataset for pretraining with additional data, users can append the corresponding image indices to these JSON files.
 2. Pretraining: take ViT-B as an example (batchsize: 4096=8*512)
 
 ```
@@ -118,7 +122,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7     python -m torch.distributed.launch \
     --sar_pretrained ./mae_pretrain_vit_base.pth \
     --dinov3_pretrained ./dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth \
     --freeze_optical_completely \
-    --clip_grad 1.0    
+    --clip_grad 1.0
 ```
 
 3. Fine-tuning: an example of evaluating the pretrained ViT-B weight on Fusar dataset
@@ -129,10 +133,11 @@ main_finetune.py \
 --dataset 'fusar'  --data_path /data/FUSAR  \
 --model 'vit_base_patch16'   \
 --batch_size 8 --epochs 30  --exp_num=5  \
---finetune './SARMAE_vit_Base.pth' 
+--finetune './SARMAE_vit_Base.pth'
 ```
 
 #### SARMAE pretrained weights
+
 |Pretrain|Backbone | Input size | Pretrained model|
 |-------|-------- | ---------- | ----- |
 | SARMAE | ViT-B | 224 × 224 | [Weights](https://huggingface.co/Wenquandan777/SARMAE/blob/main/SARMAE_vitb_checkpoint-last) |
@@ -140,8 +145,58 @@ main_finetune.py \
 
 ## 🔨 Usage
 
-Coming Soon.
+### Object Detection
 
+Environment:
+
+- Python 3.10
+- Pytorch 1.12.1+cu113
+- torchvision 0.13.1+cu113
+- torchaudio 0.12.0
+- mmcv-full==1.6.1
+
+Install mmrotate:
+
+```
+git clone https://github.com/open-mmlab/mmrotate.git
+cd mmrotate
+pip install -v -e .
+```
+
+- Fine-tuning: an example of evaluating the pretrained ViT-B weight on SSDD dataset
+
+```
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=40003 \
+tools/train.py  configs/SARMAE/SSDD/vitb_ssdd.py --launcher  'pytorch'
+```
+
+### Semantic Segmentation
+
+Environment:
+
+- Python 3.10
+- Pytorch 1.12.1+cu113
+- torchvision 0.13.1+cu113
+- torchaudio 0.12.0
+- mmcv-full==1.6.1
+
+Install mmsegmentation:
+
+```
+git clone -b main https://github.com/open-mmlab/mmsegmentation.git
+cd mmsegmentation
+pip install -v -e .
+```
+
+Fine-tuning: an example of evaluating the pretrained ViT-B weight on Raw_AIR-PolarSAR-Seg dataset
+
+```
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --nnodes=1 \
+--master_port=20001 tools/train.py \
+configs/AIRSEG/vit-b-airseg-all.py --launcher pytorch
+```
+
+```
 ## 🍭 Results
 
 <figure>
@@ -439,20 +494,21 @@ Coming Soon.
 ## ⭐ Citation
 
 If you find SARMAE helpful, please give a ⭐ and cite it as follows:
-
 ```
+
 @misc{liu2025sarmaemaskedautoencodersar,
-      title={SARMAE: Masked Autoencoder for SAR Representation Learning}, 
-      author={Danxu Liu and Di Wang and Hebaixu Wang and Haoyang Chen and Wentao Jiang and Yilin Cheng and Haonan Guo and Wei Cui and Jing Zhang},
-      year={2025},
-      eprint={2512.16635},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2512.16635}, 
+title={SARMAE: Masked Autoencoder for SAR Representation Learning},
+author={Danxu Liu and Di Wang and Hebaixu Wang and Haoyang Chen and Wentao Jiang and Yilin Cheng and Haonan Guo and Wei Cui and Jing Zhang},
+year={2025},
+eprint={2512.16635},
+archivePrefix={arXiv},
+primaryClass={cs.CV},
+url={https://arxiv.org/abs/2512.16635},
 }
-```
 
+```
 ## 🎺 Statement
 
 - This project is released under the [CC BY-NC 4.0](LICENSE).
 - For any other questions please contact Danxu Liu at [bit.edu.cn](3120245436@bit.edu.cn) or [gmail.com](ldx.wenquandan@gmail.com).
+```
